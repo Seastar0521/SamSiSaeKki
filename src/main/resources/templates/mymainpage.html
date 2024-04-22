@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myInfo 확인</title>
+</head>
+<body>
+
+마이메인페이지<br/><br/>
+
+
+<%
+
+request.setCharacterEncoding("UTF-8");
+
+String name=request.getParameter("name");
+out.println("이름: " +name+ "<br/>");
+String name=request.getParameter("nickname");
+out.println("닉네임: " +nickname+ "<br/>");
+%>
+
+
+</body>
+</html>

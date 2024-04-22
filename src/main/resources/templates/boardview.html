@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 페이지</title>
+</head>
+<body>
+<table>
+    <thead>
+
+    </thead>
+<tbody>
+</tbody>
+</table>
+<div th:each="board : ${view}">
+    <h1 th:text="${board.title}">제목</h1>
+    <p th:text="${board.content}">내용</p>
+    <a th:href="@{/board/delete(id=${board.txtnum})}">게시글 삭제</a>
+    <a th:href="@{/board/modify/{id}(id=${board.txtnum})}">게시글 수정</a>
+    <a th:href="@{/board/share/{id}(id=${board.txtnum})}">게시글 공유</a>
+</div>
+</body>
+</html>
