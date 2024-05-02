@@ -22,5 +22,13 @@ public class member {
 
     private String memnick;
 
+    public static Object getMemberPassword() {
+        return null;
+    };
+
+    public Object getMemberEmail(){
+        return null;
+    };
+
     //private Date membd;
 }

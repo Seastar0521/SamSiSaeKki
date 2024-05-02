@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Data
 public class board {
-//abc
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer txtnum;

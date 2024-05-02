@@ -25,5 +25,25 @@ public class MemberService {
         return null;
     }
 
+    public member login(member memberform) {
+        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
+        if(byMemberEmail.isPresent()){
+            // 조회 결과가 있다
+            MemberEntity memberEntity = byMemberEmail.get(); // Optional에서 꺼냄
+            if(memberEntity.getMemberPassword().equals(member.getMemberPassword())) {
+                //비밀번호 일치
+                //entity -> dto 변환 후 리턴
+                member dto = member.tomember(memberEntity);
+                return dto;
+            } else {
+                //비밀번호 불일치
+                return null;
+            }
+        } else {
+            // 조회 결과가 없다
+            return null;
+        }
+    }
+
 }
 
