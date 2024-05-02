@@ -53,6 +53,7 @@ public class BoardController {
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
+        model.addAttribute("share", false);
         return "boardlist";
     }
 
@@ -62,6 +63,7 @@ public class BoardController {
         board a = boardService.boardView(id);
         if(a != null){
             model.addAttribute("view", boardService.boardView(id));
+            model.addAttribute("share", false);
             return "boardview";
         } else
             return "nothing";
@@ -80,6 +82,7 @@ public class BoardController {
     public String boardModify(@PathVariable("id") Integer id, Model model) {
 
         model.addAttribute("board", boardService.boardView(id));
+        model.addAttribute("share", true);
 
         return "boardmodify";
     }
@@ -107,11 +110,5 @@ public class BoardController {
     }
 
     //공유 게시판 목록 표시
-    @GetMapping("/shareboard/list")
-    public String shareboardList(Model model) {
 
-        model.addAttribute("lis", shareboardService.shareboardList());
-
-        return "boardlist";
-    }
 }

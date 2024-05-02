@@ -1,5 +1,6 @@
 package com.example.Sam.service;
 
+import com.example.Sam.entity.board;
 import com.example.Sam.entity.shareboard;
 import com.example.Sam.repository.shareBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,28 +19,33 @@ public class shareBoardService {
     @Autowired
     private shareBoardRepository shareBoardRepository;
 
-    //글 작성 처리
-    public void write(shareboard board, MultipartFile file) throws Exception{
+    //글 업데이트
+    public void update(shareboard board, MultipartFile file) throws Exception{
+        if(file != null){
+            if(!file.getOriginalFilename().equals("")){
+                String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
 
-        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+                UUID uuid = UUID.randomUUID();
 
-        UUID uuid = UUID.randomUUID();
+                String fileName = uuid + "_" + file.getOriginalFilename();
 
-        String fileName = uuid + "_" + file.getOriginalFilename();
+                File saveFile = new File(projectPath, fileName);
 
-        File saveFile = new File(projectPath, fileName);
+                file.transferTo(saveFile);
 
-        file.transferTo(saveFile);
+                board.setFilename(fileName);
+                board.setFilepath("/files/" + fileName);
+            }
+        }
 
-        board.setFilename(fileName);
-        board.setFilepath("/files/" + fileName);
+        System.out.println(board);
 
         shareBoardRepository.save(board);
     }
-
+    
     //게시글 리스트 처리
-    public List<shareboard> shareboardList() {
-        return shareBoardRepository.findAll();
+    public Page<shareboard> shareboardList(Pageable pageable) {
+        return shareBoardRepository.findAll(pageable);
     }
 
     //특정 게시글 불러오기
@@ -50,6 +56,7 @@ public class shareBoardService {
             return shareBoardRepository.findById(id).get();
     }
 
+    //특정 게시글 지우기
     public void boardDelete(Integer id) {
         shareBoardRepository.deleteById(id);
     }

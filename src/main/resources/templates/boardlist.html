@@ -15,6 +15,8 @@
     <div class="layout">
         <table>
             <thead>
+            <tr th:if="${share == true}"><h1>공유게시판</h1></tr>
+            <tr th:if="${share == false}"><h1>개인게시판</h1></tr>
                 <tr>
                     <th>글번호</th>
                     <th>제목</th>
@@ -23,14 +25,16 @@
             <tbody>
                 <tr th:each="board : ${list}">
                     <td th:text="${board.txtnum}">1</td>
-                    <td><a th:text="${board.title}" th:href="@{/board/view(id=${board.txtnum})}">제목입니다.</a></td>
+                    <td th:if="${share == true}"><a th:text="${board.title}" th:href="@{/shareboard/view(id=${board.txtnum})}"></a></td>
+                    <td th:if="${share == false}"><a th:text="${board.title}" th:href="@{/board/view(id=${board.txtnum})}"></a></td>
                 </tr>
             </tbody>
         </table>
 
         <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
 
-            <a th:if="${page != nowPage}" th:href="@{/board/list(page = ${page-1})}" th:text="${page}"></a>
+            <a th:if="${page != nowPage} and ${page} != 0 and ${share == true}" th:href="@{/shareboard/list(page = ${page-1})}" th:text="${page}"></a>
+            <a th:if="${page != nowPage} and ${page} != 0 and ${share == false}" th:href="@{/board/list(page = ${page-1})}" th:text="${page}"></a>
             <strong th:if="${page == nowPage}" th:text="${page}"></strong>
 
         </th:block>
