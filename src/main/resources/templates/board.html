@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="Base" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .outter {
+                position: fixed;
+                width: 500px;
+                height: 500px;
+                background-color: #DEDEDE;
+                top: calc(50% - 250px);
+                left: calc(50% - 250px);
+            }
+
+            .topgreen {
+                width: 100%;
+                height: 35px;
+                background-color: #105924;
+            }
+
+            .board {
+                position: relative;
+                width: 340px;
+                height: 340px;
+                top: 40px;
+                left: 80px;
+                display: flex;
+                flex-direction: column;
+                background-color: #F0FEFF;
+                border-radius: 3px;
+            }
+
+            .boardtitle {
+                position: relative;
+                width: 340px;
+                height: 25px;
+                top: 25px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 20px;
+            }
+            .boardsearchbox {
+                position: relative;
+                width: 150px;
+                height: 20px;
+                border: 0px;
+                top: 45px;
+                left: 60px;
+                background-color: #e5e5e5;
+            }
+
+            .boardsearchbutton {
+                position: relative;
+                width: 40px;
+                height: 20px;
+                border: 0px;
+                top: 45px;
+                left: 65px;
+                font-size: 10px;
+                background-color: #D9D9D9;
+            }
+
+            .boardtable{
+                position: absolute;
+                width: 340px;
+                top: 115px;
+                text-align: center;
+                font-size: 10px;
+                border-spacing: 10px;
+            }
+
+            .boardbottom {
+                position: absolute;
+                top: 270px;
+                left: 25px;
+            }
+
+            .boardbottombt {
+                font-size: 13px;
+                border: 0px;
+                border-radius: 1px;
+                background-color: #D9D9D9;
+            }
+
+            .boardchecknum {
+                position: absolute;
+                width: 100%;
+                top: 435px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .num {
+                padding-left: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="outter">
+            <div class="topgreen">&nbsp &nbsp<img src="/images/logo.png" alt="logo"></div>
+            <div class="board">
+                <div class="boardtitle" th:if="${share == false}">개인 식단 게시판</div>
+                <div class="boardtitle" th:if="${share == true}">공유 식단 게시판</div>
+                <div>
+                    <input  class="boardsearchbox" type="text">
+                    <button class="boardsearchbutton">검색</button>
+                </div>
+                <table class="boardtable">
+                    <colgroup>
+                        <col width="33%">
+                        <col width="34%">
+                        <col width="33%">
+                    </colgroup>
+                    <tr>
+                        <td>번호</td>
+                        <td>제목</td>
+                        <td>날짜</td>
+                    </tr>
+                    <tr></tr>
+                    <tr th:each="board : ${list}">
+                        <td th:text="${board.txtnum}">1</td>
+                        <td th:if="${share == true}"><a th:text="${board.title}" th:href="@{/shareboard/view(id=${board.txtnum})}"></a></td>
+                        <td th:if="${share == false}"><a th:text="${board.title}" th:href="@{/board/view(id=${board.txtnum})}"></a></td>
+                        <td>날짜</td>
+                    </tr>
+                </table>
+                <div class="boardbottom">
+                    <button class="boardbottombt">편집</button>
+                    <button class="boardbottombt">공유하기</button>
+                </div>
+            </div>
+            <div class="boardchecknum">
+                <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+
+                    <a class="num" th:if="${page != nowPage} and ${page} != 0 and ${share == true}" th:href="@{/shareboard/list(page = ${page-1})}" th:text="${page}"></a>
+                    <a class="num" th:if="${page != nowPage} and ${page} != 0 and ${share == false}" th:href="@{/board/list(page = ${page-1})}" th:text="${page}"></a>
+                    <strong class="num" th:if="${page == nowPage}" th:text="${page}"></strong>
+
+                </th:block>
+            </div>
+        </div>
+        
+
+        <script>
+        </script>
+
+    </body>
+
+</html>

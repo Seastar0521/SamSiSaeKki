@@ -41,20 +41,20 @@ public class BoardController {
 
     //게시글 목록 불러오기
     @GetMapping("/board/list")
-    public String boardList(Model model, @PageableDefault(page = 0, size = 10, sort = "txtnum", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String boardList(Model model, @PageableDefault(page = 0, size = 4, sort = "txtnum", direction = Sort.Direction.DESC) Pageable pageable) {
 
         Page<board> list = boardService.boardList(pageable);
 
         int nowPage = list.getPageable().getPageNumber() + 1;
-        int startPage = Math.max(nowPage - 4, 1);
-        int endPage = Math.min(nowPage + 4, list.getTotalPages());
+        int startPage = Math.max(nowPage - 2, 1);
+        int endPage = Math.min(nowPage + 2, list.getTotalPages());
 
         model.addAttribute("list", list);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("share", false);
-        return "boardlist";
+        return "board";
     }
 
     //게시글 상세 페이지 불러오기
