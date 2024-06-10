@@ -52,8 +52,15 @@ public class shareBoardService {
     public shareboard boardView(Integer id) {
         if(shareBoardRepository.findById(id).isEmpty())
             return null;
-        else
+        else{
             return shareBoardRepository.findById(id).get();
+        }
+    }
+
+    public void countUp(Integer id) {
+        shareboard board = shareBoardRepository.findById(id).get();
+        board.setCount(board.getCount() + 1);
+        shareBoardRepository.save(board);
     }
 
     //특정 게시글 지우기

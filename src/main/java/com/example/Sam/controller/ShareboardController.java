@@ -22,7 +22,7 @@ public class ShareboardController {
     private shareBoardService shareboardService;
 
     @GetMapping("/shareboard/list")
-    public String boardList(Model model, @PageableDefault(page = 0, size = 4, sort = "txtnum", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String boardList(Model model, @PageableDefault(page = 0, size = 8, sort = "txtnum", direction = Sort.Direction.DESC) Pageable pageable) {
 
         Page<shareboard> list = shareboardService.shareboardList(pageable);
 
@@ -43,6 +43,7 @@ public class ShareboardController {
     public String boardView(Model model,@RequestParam("id") Integer id) {
         shareboard a = shareboardService.boardView(id);
         if(a != null){
+            shareboardService.countUp(id);
             model.addAttribute("view", shareboardService.boardView(id));
             model.addAttribute("share", true);
             return "boardview";

@@ -49,8 +49,9 @@ public class BoardService {
     }
 
     //게시글 리스트 처리
-    public Page<board> boardList(Pageable pageable) {
-        return boardrepository.findAll(pageable);
+    public Page<board> boardList(Pageable pageable, String id) {
+
+        return boardrepository.findByMemid(id, pageable);
     }
 
     //특정 게시글 불러오기
@@ -71,9 +72,12 @@ public class BoardService {
         board board = boardrepository.findById(id).get();
         shareboard shareboard = new shareboard();
         shareboard.setTitle(board.getTitle());
+        shareboard.setMemid(board.getMemid());
         shareboard.setContent(board.getContent());
         shareboard.setFilename(board.getFilename());
         shareboard.setFilepath(board.getFilepath());
+        shareboard.setDate(board.getDate());
+        shareboard.setCount(0);
 
         shareboardrepository.save(shareboard);
     }

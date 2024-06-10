@@ -4,135 +4,236 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="Base" content="width=device-width, initial-scale=1.0">
-
+        <title>board</title>
         <style>
-            .outter {
+
+            body{
+            background: #FFFFE4;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top: 0px;
+            }
+
+       #btn1{
+        border: 0;
+        background-color: transparent;
+        }
+
+       .topgreen {
+           width: 100%;
+           height: 35px;
+           background-color: #105924;
+       }
+
+       .board {
+           position: relative;
+           width: 1000px;
+           height: 850px;
+           top: 100px;
+           left: 500px;
+           display: flex;
+           flex-direction: column;
+           background-color: #B79844;
+           border-radius: 5px;
+       }
+
+       .boardtitle {
+           position: relative;
+           width: 340px;
+           height: 25px;
+           top: 55px;
+           left: 350px;
+           font-weight: bold;
+           text-align: center;
+           font-size: 40px;
+       }
+       .boardsearchbox {
+           position: relative;
+           width: 400px;
+           height: 28px;
+           border: 0px;
+           top: 125px;
+           left: 240px;
+           background-color: #e5e5e5;
+       }
+
+       .boardsearchbutton {
+           position: relative;
+           width: 80px;
+           height: 30px;
+           border: 0px;
+           top: 128px;
+           left: 250px;
+           font-size: 15px;
+           background-color: #D9D9D9;
+       }
+
+       .boardtable{
+           position: absolute;
+           width: 1000px;
+           top: 250px;
+           text-align: center;
+           font-size: 20px;
+           border-spacing: 10px;
+       }
+
+       .boardbottom {
+           position: absolute;
+           top: 700px;
+           left: 70px;
+       }
+
+       .boardbottombt {
+           font-size: 15px;
+           border: 0px;
+           border-radius: 3px;
+           background-color: #FFB2F5;
+       }
+
+        #deletebtn {
+          background-color: lightpink;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          width: 80px;
+          height: 50px;
+          font-size:17px;
+                }
+         #deletebtn:hover {
+            background-color: #F361DC;
+            }
+
+         #sharebtn {
+          background-color: #8BBDFF;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          width: 80px;
+          height: 50px;
+          font-size:17px;
+                }
+
+                #sharebtn:hover {
+            background-color: #6799FF;
+            }
+
+          #moveshare {
+          background-color: #74D36D;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          width: 130px;
+          height: 50px;
+          font-size:15px;
+                }
+
+                #moveshare:hover {
+            background-color: #35B62C;
+            }
+
+          #moveboard {
+          background-color: #59DA50;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          width: 130px;
+          height: 50px;
+          font-size:15px;
+                }
+
+            #moveboard:hover {
+            background-color: #35B62C;
+            }
+
+       .boardchecknum {
+           position: absolute;
+           width: 95%;
+           top: 900px;
+           text-align: center;
+           font-weight: bold;
+       }
+
+       .num {
+           padding-left: 10px;
+       }
+
+           .img {
+               width: 100%;
+               height: 100%;
+               opacity: 50%;
+               margin: 0;
+           }
+
+            .logo {
                 position: fixed;
-                width: 500px;
-                height: 500px;
-                background-color: #DEDEDE;
-                top: calc(50% - 250px);
-                left: calc(50% - 250px);
+                left: 30px;
+                top: 0px;
             }
 
-            .topgreen {
-                width: 100%;
-                height: 35px;
-                background-color: #105924;
+            #checkbox{
+            width:25px;
+            height:25px;
             }
 
-            .board {
-                position: relative;
-                width: 340px;
-                height: 340px;
-                top: 40px;
-                left: 80px;
-                display: flex;
-                flex-direction: column;
-                background-color: #F0FEFF;
-                border-radius: 3px;
-            }
+            .div
+        {margin-top:0px; width:100% ;height:40px; background:#005000; list-style:none;}
 
-            .boardtitle {
-                position: relative;
-                width: 340px;
-                height: 25px;
-                top: 25px;
-                font-weight: bold;
-                text-align: center;
-                font-size: 20px;
-            }
-            .boardsearchbox {
-                position: relative;
-                width: 150px;
-                height: 20px;
-                border: 0px;
-                top: 45px;
-                left: 60px;
-                background-color: #e5e5e5;
-            }
 
-            .boardsearchbutton {
-                position: relative;
-                width: 40px;
-                height: 20px;
-                border: 0px;
-                top: 45px;
-                left: 65px;
-                font-size: 10px;
-                background-color: #D9D9D9;
-            }
-
-            .boardtable{
-                position: absolute;
-                width: 340px;
-                top: 115px;
-                text-align: center;
-                font-size: 10px;
-                border-spacing: 10px;
-            }
-
-            .boardbottom {
-                position: absolute;
-                top: 270px;
-                left: 25px;
-            }
-
-            .boardbottombt {
-                font-size: 13px;
-                border: 0px;
-                border-radius: 1px;
-                background-color: #D9D9D9;
-            }
-
-            .boardchecknum {
-                position: absolute;
-                width: 100%;
-                top: 435px;
-                text-align: center;
-                font-weight: bold;
-            }
-
-            .num {
-                padding-left: 10px;
-            }
 
         </style>
     </head>
     <body>
+    <div class="div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" id="btn1" onclick="location.href='/homepage'">
+            <img class="logo" src="/static/images/logo.png" alt="logo" width="80px" height="38px"  >
+        </button></div>
 
-        <div class="outter">
-            <div class="topgreen">&nbsp &nbsp<img src="/images/logo.png" alt="logo"></div>
             <div class="board">
                 <div class="boardtitle" th:if="${share == false}">개인 식단 게시판</div>
                 <div class="boardtitle" th:if="${share == true}">공유 식단 게시판</div>
                 <div>
-                    <input  class="boardsearchbox" type="text">
+                    <input class="boardsearchbox" type="text">
                     <button class="boardsearchbutton">검색</button>
                 </div>
+                <form method="post">
                 <table class="boardtable">
                     <colgroup>
-                        <col width="33%">
-                        <col width="34%">
-                        <col width="33%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="40%">
+                        <col th:if="${share == false}"width="20%">
+                        <col th:if="${share == false}"width="20%">
+                        <col th:if="${share == true}" width="15%">
+                        <col th:if="${share == true}" width="10%">
+                        <col th:if="${share == true}" width="15%">
                     </colgroup>
                     <tr>
+                        <td></td>
                         <td>번호</td>
                         <td>제목</td>
+                        <td>글쓴이</td>
+                        <td th:if="${share == true}">조회수</td>
                         <td>날짜</td>
                     </tr>
+
                     <tr></tr>
                     <tr th:each="board : ${list}">
+                        <td><input type="checkbox" id="checkbox" name="checked" th:value="${board.txtnum}"/> </td>
                         <td th:text="${board.txtnum}">1</td>
                         <td th:if="${share == true}"><a th:text="${board.title}" th:href="@{/shareboard/view(id=${board.txtnum})}"></a></td>
                         <td th:if="${share == false}"><a th:text="${board.title}" th:href="@{/board/view(id=${board.txtnum})}"></a></td>
-                        <td>날짜</td>
+                        <td th:text="${board.memid}">글쓴이</td>
+                        <td th:if="${share == true}" th:text="${board.count}">조회수</td>
+                        <td th:text="${board.date}">날짜</td>
                     </tr>
                 </table>
                 <div class="boardbottom">
-                    <button class="boardbottombt">편집</button>
-                    <button class="boardbottombt">공유하기</button>
+                    <button class="boardbottombt" id="deletebtn" type="submit" formaction="/board/deleteselected">삭제</button>
+                    <button th:if="${share == false}" class="boardbottombt" id="sharebtn" type="submit" formaction="/board/shareselected">공유하기</button>
+                    <button th:if="${share == false}" class="boardbottombt" id="moveshare" type="button" onclick="location.href='/shareboard/list'">공유게시판 이동</button>
+                    <button th:if="${share == true}" class="boardbottombt" id="moveboard" type="button" onclick="location.href='/board/list'">개인게시판 이동</button>
                 </div>
+                </form>
             </div>
             <div class="boardchecknum">
                 <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
@@ -140,15 +241,11 @@
                     <a class="num" th:if="${page != nowPage} and ${page} != 0 and ${share == true}" th:href="@{/shareboard/list(page = ${page-1})}" th:text="${page}"></a>
                     <a class="num" th:if="${page != nowPage} and ${page} != 0 and ${share == false}" th:href="@{/board/list(page = ${page-1})}" th:text="${page}"></a>
                     <strong class="num" th:if="${page == nowPage}" th:text="${page}"></strong>
-
                 </th:block>
             </div>
-        </div>
-        
 
         <script>
         </script>
 
     </body>
-
 </html>

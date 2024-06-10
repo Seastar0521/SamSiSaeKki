@@ -14,6 +14,8 @@ public class shareboard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer txtnum;
 
+    private String memid;
+
     private String title;
 
     private String content;
@@ -21,4 +23,8 @@ public class shareboard {
     private String filename;
 
     private String filepath;
+
+    private String date;
+
+    private Integer count;
 }
