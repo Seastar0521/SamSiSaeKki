@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>개인정보 수정</title>
+    <style>
+
+        body,html{
+         height: 100%;
+         margin: 0;
+         padding: 0;
+         }
+
+       body{
+       background: #FFFFE4;
+       margin-left:auto;
+       margin-right:auto;
+       text-align: center;
+       margin-top: 0px;
+       }
+
+       #btn1{
+       border: 0; background-color: transparent;
+       }
+
+       h2{
+       padding-top:175px;
+       margin-bottom:50px;
+       }
+
+          /*모든 요소 여백 없애기*/
+      *{
+            margin: 0;
+            padding: 0;
+      }
+
+        /*초록바*/
+      .div{
+      position:fixed;
+      top:0px;
+      width:100% ;
+      height:40px;
+      background:#005000;
+      list-style:none;}
+
+      .logo {
+           position: fixed;
+           left: 30px;
+           top: 0px;
+       }
+
+       #btn1{ border: 0; background-color: transparent;}
+        li { list-style-type : none }
+
+        .layout{margin-top:100px;}
+
+        label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+[type="checkbox"] {
+  appearance: none;
+  position: relative;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 1.25em;
+  width: 2.25em;
+  height: 1.25em;
+}
+
+[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  transform: scale(0.8);
+  background-color: gray;
+  transition: left 250ms linear;
+}
+
+[type="checkbox"]:checked {
+  background-color: tomato;
+  border-color: tomato;
+}
+
+[type="checkbox"]:checked::before {
+  background-color: white;
+  left: 1em;
+}
+
+[type="checkbox"]:disabled {
+  border-color: lightgray;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="checkbox"]:disabled:before {
+  background-color: lightgray;
+}
+
+[type="checkbox"]:disabled + span {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="checkbox"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) solid tomato;
+}
+
+[type="checkbox"]:enabled:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+}
+
+/* Global CSS */
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+        #Toggle1{
+  font-size:14px;
+  color: #666;
+}
+        #Toggle2{
+  font-size:14px;
+  color: #666;
+}
+
+         #savebtn {
+      background-color: lightpink;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 80px;
+      height: 50px;
+      font-size: 20px;
+        }
+
+     #savebtn:hover {
+    background-color: #DB8ED1;
+    }
+
+         #cancelbtn {
+      background-color: lightblue;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 80px;
+      height: 50px;
+      font-size: 20px;
+        }
+
+     #cancelbtn:hover {
+    background-color: #6798FD;
+    }
+
+ #button1 {
+      background-color: #74D36D;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 80px;
+      height: 50px;
+      font-size: 20px;
+        }
+
+     #button1:hover {
+    background-color: #3E9D37;
+    }
+
+    #button2 {
+      background-color: #F2CB61;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 80px;
+      height: 50px;
+      font-size: 20px;
+        }
+
+     #button2:hover {
+    background-color: #CEA73D;
+    }
+
+
+
+
+
+
+    /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  vertical-align:middle;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.slider.round1 {
+  border-radius: 34px;
+}
+
+.slider.round1:before {
+  border-radius: 50%;
+}
+
+p {
+	margin:0px;
+	display:inline-block;
+	font-size:15px;
+	font-weight:bold;
+}
+
+
+
+    </style>
+</head>
+
+
+
+<body>
+<div class="div">
+    <button type="button" id="btn1" onclick="location.href='/homepage'">
+        <img class="logo" src="/static/images/logo.png" alt="logo" width="80px" height="38px"  >
+    </button></div>
+
+<div class="layout">
+<h1 style="margin-bottom:50px;">개인정보 수정</h1>
+
+
+            <img src="/static/images/defprofile.png" alt="logo" width="80px" height="80px" />
+            <br>
+            <!--<input type="file" name="file" id="file">-->
+            <div class='right-box2'>
+                <div id="username">
+                    <b>이름&nbsp;</b>
+                    <p><div th:text="${member.memname}" name="memname">
+                    </div></p>
+                </div>
+            </div>
+
+            <!--<div>
+            <input type="text" value="${member.memname}"
+                   class="form-control" placeholder="Enter UserName" id="username" readonly>
+</div>-->
+        <div>
+        <label><b>닉네임&nbsp;</b></label>
+        <input id="memnick" type="text" th:value="${member.memnick}"/>
+        </div><br>
+
+            <div>
+                <label><b>이메일&nbsp;</b></label>
+                <input id="mememail" type="text" th:value="${member.mememail}"/>
+            </div><br>
+
+        <div>
+        <label><b>성별&nbsp;</b></label>
+        <input name="memgender" id="memmale" type="radio" value="0" th:checked="${member.memgender != 1}"/> <label>남&nbsp;</label>
+        <input name="memgender" id="memfemale" type="radio" value="1" th:checked="${member.memgender == 1}" /> <label>여&nbsp;</label>
+            <br><br>
+        </div>
+        <div>
+        <label><b>생년월일&nbsp;</b></label>
+        <input id="membd" type="text" placeholder="8자리 생년월일 입력하세요" th:value="${member.membd}">
+            </div><br>
+
+        <div>
+        <label><b>키&nbsp;</b></label>
+        <input id="memheight" type="text" th:value="${member.memheight}">
+        <label>cm</label><br><div>
+        </div><br></div>
+        <div><label><b>체중&nbsp;</b></label>
+        <input id="memweight" type="text" th:value="${member.memweight}">
+        <label>kg&nbsp;</label><br><br></div>
+
+    <br>
+    <div>
+        <label><b>음식 알레르기&nbsp;</b></label><br><br>
+
+        <input type='checkbox'
+               name='egg'
+               id='egg'
+               th:checked="${allergy.egg}"/>&nbsp;달걀&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='milk'
+               value='milk'
+               th:checked="${allergy.milk}"/>우유
+        <input type='checkbox'
+               name='memallergy'
+               id='wheat'
+               value='wheat'
+               th:checked="${allergy.wheat}"/>&nbsp;밀&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='bean'
+               value='bean'
+               th:checked="${allergy.bean}"/>&nbsp;콩&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='peanut'
+               value='peanut'
+               th:checked="${allergy.peanut}"/>&nbsp;땅콩&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='chestnut'
+               value='chestnut'
+               th:checked="${allergy.chestnut}"/>&nbsp;밤&nbsp;&nbsp;<br><br>
+        <input type='checkbox'
+               name='memallergy'
+               id='fish'
+               value='fish'
+               th:checked="${allergy.fish}"/>&nbsp;생선&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='clam'
+               value='clam'
+               th:checked="${allergy.clam}"/>&nbsp;조개&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='crab'
+               value='crab'
+               th:checked="${allergy.crab}"/>&nbsp;갑각류&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='nut'
+               value='nut'
+               th:checked="${allergy.nut}"/>&nbsp;견과류&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memallergy'
+               id='peach'
+               value='peach'
+               th:checked="${allergy.peach}"/>&nbsp;복숭아&nbsp;&nbsp;<br></div><br>
+
+    <!-- 오류 발생(고칠 수 있나?)
+    <label class="switch">
+        <input type="checkbox" id="btn2">
+        <span class="slider round"></span>
+    </label>
+    <p>없음</p><p style="display:none;">달걀&nbsp;우유&nbsp;해산물</p><br><br>
+    -->
+
+
+    <div>
+        <label><b>질병&nbsp;</b></label><br><br>
+        <input type='checkbox'
+               name='memdisease'
+               value='diabete'
+               id='diabete'
+               th:checked="${disease.diabete}"/>&nbsp;당뇨&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memdisease'
+               value='highbloodpressure'
+               id='highbloodpressure'
+               th:checked="${disease.highbloodpressure}"/>&nbsp;고혈압&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memdisease'
+               value='heartdisease'
+               id='heartdisease'
+               th:checked="${disease.heartdisease}"/>&nbsp;심장질환&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memdisease'
+               value='obesity'
+               id='obesity'
+               th:checked="${disease.obesity}"/>&nbsp;비만&nbsp;&nbsp;<br><br>
+        <input type='checkbox'
+               name='memdisease'
+               value='osteoporosis'
+               id='osteoporosis'
+               th:checked="${disease.osteoporosis}"/>&nbsp;골다공증&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memdisease'
+               value='anemia'
+               id='anemia'
+               th:checked="${disease.anemia}"/>&nbsp;빈혈&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memdisease'
+               value='urinarystones'
+               id='urinarystones'
+               th:checked="${disease.urinarystones}"/>&nbsp;요로결석&nbsp;&nbsp;
+        <input type='checkbox'
+               name='memdisease'
+               value='gout'
+               id='gout'
+               th:checked="${disease.gout}"/>&nbsp;통풍&nbsp;&nbsp;</div><br>
+    <button type="button" id="savebtn" onclick="infosave()">저장</button>
+    <button id="cancelbtn" type="button" onclick="location.href='/homepage' ">나가기</button>
+</div>
+
+<script>
+    const infosave = () => {
+        personinfo();
+        disease();
+        allergy();
+        profilechange();
+        alert("저장되었습니다!");
+    }
+
+    const disease = () => {
+            const diabete = document.getElementById('diabete').checked;
+            const highbloodpressure = document.getElementById('highbloodpressure').checked;
+            const heartdisease = document.getElementById('heartdisease').checked;
+            const obesity = document.getElementById('obesity').checked;
+            const osteoporosis = document.getElementById('osteoporosis').checked;
+            const anemia = document.getElementById('anemia').checked;
+            const urinarystones = document.getElementById('urinarystones').checked;
+            const gout = document.getElementById('gout').checked;
+
+
+            const params = {
+                "diabete": diabete ,
+                "highbloodpressure": highbloodpressure ,
+                "heartdisease": heartdisease ,
+                "obesity": obesity ,
+                "osteoporosis": osteoporosis ,
+                "anemia": anemia ,
+                "urinarystones": urinarystones ,
+                "gout": gout
+            }
+
+            $.ajax({
+                // 요청방식: post
+                // 요청주소: /ex06
+                type: "post",
+                url: "/disease",
+                // parameter 전달하기
+                data: params,
+                // 요청이 성공했을 때 실행되는 부분
+                success: function (res) {
+                    console.log("성공", res)
+                },
+                // 요청이 실패했을 때 실행되는 부분
+                error: function (err) {
+                    console.log("실패", err);
+                },
+            })
+        }
+
+        const allergy = () => {
+            const egg = document.getElementById('egg').checked;
+            const milk = document.getElementById('milk').checked;
+            const wheat = document.getElementById('wheat').checked;
+            const bean = document.getElementById('bean').checked;
+            const peanut = document.getElementById('peanut').checked;
+            const chestnut = document.getElementById('chestnut').checked;
+            const fish = document.getElementById('fish').checked;
+            const clam = document.getElementById('clam').checked;
+            const crab = document.getElementById('crab').checked;
+            const nut = document.getElementById('nut').checked;
+            const peach = document.getElementById('peach').checked;
+
+            const params = {
+                "egg": egg ,
+                "milk": milk ,
+                "wheat": wheat ,
+                "bean": bean ,
+                "peanut": peanut ,
+                "chestnut": chestnut ,
+                "fish": fish ,
+                "clam": clam ,
+                "crab": crab ,
+                "nut": nut ,
+                "peach": peach
+            }
+
+            $.ajax({
+                // 요청방식: post
+                // 요청주소: /ex06
+                type: "post",
+                url: "/allergy",
+                // parameter 전달하기
+                data: params,
+                // 요청이 성공했을 때 실행되는 부분
+                success: function (res) {
+                    console.log("성공", res)
+                },
+                // 요청이 실패했을 때 실행되는 부분
+                error: function (err) {
+                    console.log("실패", err);
+                },
+            })
+        }
+
+        const profilechange = () => {
+            var fileInput = $('#file')[0];
+
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+
+            $.ajax({
+                url: '/member/profilechange', // 서버의 파일 업로드 처리 URL
+                type: 'POST',
+                data: formData,
+                processData: false, // jQuery가 데이터를 처리하지 않도록 설정
+                contentType: false, // jQuery가 Content-Type을 설정하지 않도록 설정
+                success: function(response) {
+                    console.log('File uploaded successfully!');
+                    console.log(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('File upload failed!');
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        }
+
+        const personinfo = () => {
+            const memnick = document.getElementById('memnick').value;
+            const mememail = document.getElementById('mememail').value;
+            const memgender = document.querySelector('input[name="memgender"]:checked').value;
+            const membd = document.getElementById('membd').value;
+            const memheight = document.getElementById('memheight').value;
+            const memweight = document.getElementById('memweight').value;
+
+            const params = {
+                "memnick": memnick ,
+                "mememail": mememail ,
+                "memgender": memgender ,
+                "membd": membd ,
+                "memheight": memheight ,
+                "memweight": memweight ,
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/member/personinfosave",
+                data: params,
+                success: function (res) {
+                    console.log("성공", res)
+                },
+                error: function (err) {
+                    console.log("실패", err);
+                },
+            })
+        }
+</script>
+</body>
+</html>
+
+
+
+

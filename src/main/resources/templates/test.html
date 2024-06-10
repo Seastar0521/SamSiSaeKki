@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+                                 integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+<body>
+asdasd
+<script>
+    const ex06Fn = () => {
+            const val1 = "Hello SpringBoot!!"
+
+            const params = {
+                "param1": val1,
+                "param2": [ "1", "2", "3" ]
+            }
+
+            $.ajax({
+                // 요청방식: post
+                // 요청주소: /ex06
+                type: "post",
+                url: "/tests",
+                // parameter 전달하기
+                data: params,
+                // 요청이 성공했을 때 실행되는 부분
+                success: function (res) {
+                    console.log("성공", res)
+                },
+                // 요청이 실패했을 때 실행되는 부분
+                error: function (err) {
+                    console.log("실패", err);
+                },
+            })
+        }
+    ex06Fn();
+</script>
+</body>
+</html>

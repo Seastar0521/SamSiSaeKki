@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>homepage</title>
+    <style>
+        body
+        {background: #FFFFE4; margin-left:auto; margin-right:auto; margin-top: 0px;}
+        .div
+        {margin-top:0px; width:100% ;height:40px; background:#005000; list-style:none;}
+        .div1
+        {background: #FAF4C0; width: 250px; height: 200px; margin-left: 1000px;}
+        .topImage
+        {width: 100%; height:auto;  object-fit: cover;}
+        h1
+        {width: 40%; height: 30%; background: #CEFBC9;}
+        .right-box1
+        {width: 40%; height: 130px; background: #FAF4C0; border-radius: 10px; float: right; text-align:center; margin-right:8%; }
+        .right-box2
+        {width: 40%; height: 170px; background: #FAF4C0; border-radius: 10px; float: right; text-align:center; margin-right:8%; }
+        .left-box
+        {width: 40%; height: 340px; background: #B2AC78; border-radius: 10px; float: left; text-align:left; margin-left:8%}
+        .p2
+        {width: 40%; height: 30%; background: #C11009;}
+        a:link
+        {color:gray;text-decoration:none;}
+        a:visited
+        {color:gray;text-decoration:none;}
+        a:hover
+        {color:black;text-decoration:underline;}
+        #btn1
+        {border: 0; background-color: transparent;}
+
+        #button1 {
+          background-color: lightpink;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          width: 100px;
+          height: 70px;
+          font-size:17px;
+        }
+           #button2 {
+          background-color: skyblue;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          width: 100px;
+          height: 70px;
+          font-size:17px;
+        }
+
+     #button1:hover {
+    background-color: #DB8ED1;
+    }
+
+     #button2:hover {
+    background-color: #4ABFD3;
+    }
+
+     #button3 {
+  background-color: lightpink;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 70px;
+  font-size:17px;
+}
+    #button4 {
+  background-color: lightblue;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 70px;
+  font-size:17px;
+}
+   #button5 {
+  background-color: lightgreen;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 70px;
+  font-size:17px;
+}
+     #button3:hover {
+    background-color: #DB8ED1;
+    }
+     #button4:hover {
+    background-color: #4ABFD3;
+    }
+     #button5:hover {
+    background-color: #7BA518;
+    }
+
+.logo {
+    position: fixed;
+    left: 30px;
+    top: 0px;
+}
+
+#username{
+font-size:30px;
+color: blue;
+font-weight:bold;
+
+}
+
+    </style>
+</head>
+<body>
+<div class="div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" id="btn1" onclick="location.href='/homepage'">
+    <img class="logo" src="/static/images/logo.png" alt="logo" width="80px" height="38px"  >
+</button></div>
+
+<div class="topImage">
+    <img src="/static/images/image.png" alt="image" width=100% />
+    <!--<a href="D:\KMJ_file\Spring\src\main\resources\images\image.png"></a>-->
+
+   </div>
+<div class='left-box'><b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;식단 게시판</b>
+    <hr width = "90%" color = "black" size = "3">
+    <table class="boardtable">
+        <colgroup>
+            <col width="8%">
+            <col width="26%">
+            <col width="26%">
+            <col width="20%">
+            <col width="20%">
+        </colgroup>
+        <tr>
+            <td></td>
+            <td>제목</td>
+            <td>글쓴이</td>
+            <td>조회수</td>
+            <td>날짜</td>
+        </tr>
+
+        <tr></tr>
+        <tr th:each="board : ${list}">
+            <td></td>
+            <td><a th:text="${board.title}" th:href="@{/shareboard/view(id=${board.txtnum})}"></a></td>
+            <td th:text="${board.memid}">글쓴이</td>
+            <td th:text="${board.count}">조회수</td>
+            <td th:text="${board.date}">날짜</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class='right-box1'th:if="${member == null}">
+    <br>
+    <button type="button" id="button1" onclick="location.href='/signup'">회원가입</button>
+    <button type="button" id="button2" onclick="location.href='/login'">Login</button>
+
+
+</div>
+
+<div class='right-box2' th:if="${member != null}">
+    <div id="username">
+        <div th:text="${member.memid}">
+        </div>
+        <div>님 환영</div>
+
+    </div>
+        <button style="left: 10px" type="button" id="button3" onclick="location.href='/member/mypage'">마이페이지</button>
+        <button type="button" id="button4" onclick="location.href='/goToGPTInput'">식단짜기</button>
+        <form action="/logout" method="post" style="width:100px; height=70px; display: inline;"  >
+            <button type="submit" id="button5">Logout</button>
+        </form>
+
+</div>
+
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var message = [[${message}]];
+    console.log(message);
+    if(message != null){
+        alert(message);
+    }
+    /*]]>*/
+</script>
+</body>
+</html>

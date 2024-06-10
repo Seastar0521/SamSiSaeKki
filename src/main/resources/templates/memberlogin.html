@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <style>
+        body,html{
+        height: 100%;
+        margin: 0;
+	    padding: 0;
+        }
+
+        body
+        {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-top: 0px;
+        }
+
+        /*모든 요소 여백 없애기*/
+        *{
+              margin: 0;
+              padding: 0;
+        }
+
+        /*초록바*/
+        .div{
+            position:fixed;
+            top:0px;
+            width:100%;
+            height:40px;
+            background:#005000;
+            list-style:none;
+        }
+
+
+        .box1{
+             padding-top:175px;
+             background-image: url('static/images/background.jpg');
+             background-size: cover;
+             opacity:0.7;
+             height: 100%;
+            top:50%;
+            left: 60%;
+            color:rgb(228,247,186);
+            font-weight:bold;
+            position:center;
+            text-align: center;
+        }
+
+        #btn1{
+        border: 0;
+        background-color: transparent;}
+
+        a:link{color:white;text-decoration:none; font-weight:bold;}
+        a:visited{color:white;text-decoration:none; font-weight:bold;}
+        a:hover{color:blue;font-weight:bold;}
+
+     .logo {
+        position: fixed;
+        left: 30px;
+        top: 0px;
+        }
+
+   #button1 {
+      background-color: lightpink;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      width: 100px;
+      height: 70px;
+      font-size:18px;
+        }
+
+     #button1:hover {
+    background-color: #DB8ED1;
+    }
+
+
+
+    </style>
+</head>
+<body>
+<div class="box1">
+<h1>로그인</h1><br><br>
+    <form action="/login/pro" method="post">
+        <div>
+        <label>ID&nbsp;</label>
+        <input name="memid" type="text"><br><br></div>
+        <div>PW&nbsp;</label>
+        <input name="mempw" type="password"><br><br></div>
+        <button type="submit" id="button1">로그인</button>
+    </form><br><br>
+<!--<a href="/searchid">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/searchpw">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;-->
+    <a href="/homepage">메인페이지</a>&nbsp;&nbsp;
+</div>
+<div class="div">
+    <button type="button" id="btn1" onclick="location.href='/homepage'">
+        <img class="logo" src="/static/images/logo.png" alt="logo" width="80px" height="38px"  >
+    </button>
+</div>
+</body>
+</html>
+
+
+
+

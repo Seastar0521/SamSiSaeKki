@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        body,html{
+           height: 100%;
+           margin: 0;
+           padding: 0;
+           }
+
+         /*모든 요소 여백 없애기*/
+        *{
+              margin: 0;
+              padding: 0;
+        }
+
+
+       .div{
+       position:fixed;
+       top:0px;
+       width:100% ;
+       height:40px;
+       background:#005000;
+       list-style:none;}
+
+         .box1{
+
+        padding-top:175px;
+        background-image: url('static/images/background.jpg');
+        background-size: cover;
+        opacity:0.7;
+         height: 100%;
+        top:50%;
+        left: 60%;
+        color:rgb(228,247,186);
+        position:center;
+        text-align: center;
+        }
+
+
+       #btn1{ border: 0; background-color: transparent;}
+
+
+        body
+        {
+        margin-left:auto;
+        margin-right:auto;
+        text-align: center;
+        margin-top: 0px;
+        background-size:cover;
+        }
+
+
+       .logo {
+               position: fixed;
+               left: 30px;
+               top: 0px;
+           }
+
+        a:link{color:white;text-decoration:none; font-weight:bold;}
+        a:visited{color:white;text-decoration:none; font-weight:bold;}
+        a:hover{color:blue; font-weight:bold;}
+
+
+
+
+  #button1 {
+  background-color: lightpink;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 70px;
+  font-size:18px;
+}
+
+ #button1:hover {
+background-color: #DB8ED1;
+}
+
+.layout{
+font-weight:bold;
+}
+
+    </style>
+</head>
+
+<body>
+
+<div class="box1">
+<h1>회원가입</h1><br><br>
+<form action="/signuppro" method="post" style="margin-top:10px;">
+    <div class="layout">
+        <label>이름&nbsp;</label>
+        <input type="text" name="memname"><br><br>
+        <label>아이디&nbsp;</label>
+        <input type="text" name="memid">&nbsp;<br><br>
+        <label>비밀번호&nbsp;</label>
+        <input type="password" name="mempw"><br><br>
+        <label>비밀번호 확인&nbsp;</label>
+        <input type="password"><br><br>
+        <label>이메일&nbsp;</label>
+        <input type="text" name="mememail"><br><br>
+        <label>닉네임&nbsp;</label>
+        <input type="text" name="memnick"><br><br>
+        <label>생년월일&nbsp;</label>
+        <input type="date" name="membd"><br><br>
+        <label>성별&nbsp;</label>
+        <group>
+            <input type="radio" name="memgender" value="0"><label>남&nbsp;</label>
+            <input type="radio" name="memgender" value="1"><label>여&nbsp;</label>
+        </group>
+        <br><br>
+        <button type="submit" id="button1">회원가입</button>
+
+</div><br><br>
+</form>
+<a href="/login">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/homepage">메인페이지</a>
+</div>
+<div class="div">
+    <button type="button" id="btn1" onclick="location.href='/homepage'">
+        <img class="logo" src="/static/images/logo.png" alt="logo" width="80px" height="38px"  >
+    </button></div>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var message = [[${message}]];
+        console.log(message);
+        if(message != null){
+            alert(message);
+        }
+        /*]]>*/
+    </script>
+   </body>
+</html>
+
+

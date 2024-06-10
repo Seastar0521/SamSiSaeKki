@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>mymainpage</title>
+    <style>
+
+        #part1{
+        background-color: #B2CCFF;
+        text-align: left;
+        width:930px;
+        height: 250px;
+        border-radius: 20px
+             }
+        #part2{
+        background-color: #FFD9FA;
+        text-align: left;
+        width:930px;
+        height: 250px;
+        border-radius: 20px
+             }
+         #part3{
+        background-color: #FAE0D4;
+        text-align: left;
+        width:930px;
+        height: 250px;
+        border-radius: 20px
+             }
+   body
+        {background: #FFFFE4; margin-left:auto; margin-right:auto; text-align: center;  margin-top: 0px;}
+
+    .logo {
+            position: fixed;
+            left: 30px;
+            top: 0px;
+        }
+         .div
+        {top:0px; position:fixed; margin-top:0px; width:100% ;height:40px; background:#005000; list-style:none;}
+        #btn1
+        { border: 0; background-color: transparent; }
+
+        #flexbox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height:900px;
+        }
+
+        .right-box2
+        { width: 30%;
+        height: 190px;
+        background: #FAF4C0;
+        border-radius: 10px;
+        float: right;
+        text-align:left;
+        margin-right:7%;
+        margin-top:-6%;
+        right:10px;
+        top: 11px;
+         }
+
+
+          #username{
+        font-size:18px;
+        color: blue;
+        font-weight:bold;
+        margin-top:3%;
+
+
+        }
+
+        .flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.flex-row > div {
+    margin-left: 10px;
+}
+
+            #button1 {
+  background-color: #FFC19E;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 70px;
+}
+   #button2 {
+  background-color: #A1CF36;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 70px;
+}
+ #button3 {
+  background-color: #FD65E9;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+
+
+}
+
+#button4 {
+  background-color: #F09661;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+}
+ #button1:hover {
+background-color: #C98B68;
+}
+
+ #button2:hover {
+background-color: #6B9900;
+}
+
+#button3:hover {
+background-color: #C72FB3;
+}
+
+#button4:hover {
+background-color: #BA602B;
+}
+    </style>
+</head>
+    <body>
+        <div class="div">
+           <button type="button" id="btn1" onclick="location.href='/homepage'">
+             <img class="logo" src="/static/images/logo.png" alt="logo" width="80px" height="38px"  >
+           </button></div>
+
+
+        <h1 style="margin : 100px 0px 50px 30px; ">마이메인페이지</h1>
+
+    <div id="flexbox">
+        <div id="part1">
+            <h1>&nbsp;&nbsp;&nbsp;개인정보</h1>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="button1" onclick="location.href='/member/personinfo'">내 정보 수정</button>
+            <button type="button" id="button2" onclick="location.href='/board/list'">내 식단 보기</button>
+            <img style="position: absolute; left: 870px; top: 270px;" src="/static/images/defprofile.png" alt="logo" width="150px" height="150px" />
+
+            <div class='right-box2' th:if="${member != null}">
+                <div id="username">
+                    <div class="flex-row">&nbsp;&nbsp;이름:
+                        <div th:text="${member.memname}"></div>
+                    </div>
+                    <div class="flex-row">&nbsp;&nbsp;닉네임:
+                        <div th:text="${member.memnick}"></div>
+                    </div>
+                    <div class="flex-row">&nbsp;&nbsp;성별:
+                        <div th:if="${member.memgender == 0}">남</div>
+                        <div th:if="${member.memgender == 1}">여</div>
+                    </div>
+                    <div class="flex-row">&nbsp;&nbsp;생일:
+                        <div th:text="${member.membd}"></div>
+                    </div>
+                    <div class="flex-row">&nbsp;&nbsp;이메일:
+                        <div th:text="${member.mememail}"></div>
+                    </div>
+                    <div class="flex-row">&nbsp;&nbsp;키:
+                        <div th:text="${member.memheight}"></div>
+                    </div>
+                    <div class="flex-row">&nbsp;&nbsp;체중:
+                        <div th:text="${member.memweight}"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="part2">
+          <h1>&nbsp;&nbsp;&nbsp;스크랩</h1>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="button3" onclick="location.href='/board/list'">목록 보기</button>
+        </div>
+
+        <div id="part3">
+            <h1>&nbsp;&nbsp;&nbsp;좋아요</h1>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="button4" onclick="location.href='/board/list'">목록 보기</button>
+        </div>
+    </div>
+    </body>
+</html>
