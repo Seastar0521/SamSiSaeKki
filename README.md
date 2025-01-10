@@ -5,26 +5,10 @@
 
 **<개발환경>**
 
-**open JDK**
-
-**IntelliJ**
-
-**Heidisql**
-
-**Spring Boot**
+**open JDK**, **IntelliJ**, **Heidisql**, **Spring Boot**
 
 
 
 **<라이브러리,프레임워크>**
 
-**Spring Date JPA**, **Spring Web**, 
-
-**Mybatis**
-
-**Thymeleaf**
-
-**Apache Tomcat**
-
-**lombok**
-
-**Gradle**
+**Spring Date JPA**, **Spring Web**, **Mybatis**, **Thymeleaf**, **Apache Tomcat**, **lombok**, **Gradle**
