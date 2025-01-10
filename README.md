@@ -12,3 +12,6 @@
 **<라이브러리,프레임워크>**
 
 **Spring Date JPA**, **Spring Web**, **Mybatis**, **Thymeleaf**, **Apache Tomcat**, **lombok**, **Gradle**
+
+**<구현기능>**
+**회원가입, 게시판 CRUD기능, ChatGPT API를 통한 식단생성 기능**
