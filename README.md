@@ -17,9 +17,7 @@
 
 **<라이브러리,프레임워크>**
 
-**Spring Date JPA**
-
-**Spring Web**
+**Spring Date JPA**, **Spring Web**, 
 
 **Mybatis**
 
