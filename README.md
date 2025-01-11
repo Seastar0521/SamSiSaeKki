@@ -15,3 +15,5 @@
 **<구현기능>**
 
 **회원가입, 게시판 CRUD기능, ChatGPT API를 통한 식단생성 기능**
+
+![image](https://github.com/user-attachments/assets/ee3a843d-78ec-4957-bd48-3e67e231e9bd)
