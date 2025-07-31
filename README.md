@@ -16,6 +16,7 @@
 
 **회원가입, 게시판 CRUD기능, ChatGPT API를 통한 식단생성 기능**
 
+<img width="1854" height="775" alt="image" src="https://github.com/user-attachments/assets/ac88abfd-5265-42e1-bea7-44f47635a540" />
 
 ![image](https://github.com/user-attachments/assets/8466cac3-b0d9-4c09-af4f-cbd36d5cf126)
 ![image](https://github.com/user-attachments/assets/ee3a843d-78ec-4957-bd48-3e67e231e9bd)
