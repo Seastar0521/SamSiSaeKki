@@ -18,5 +18,4 @@
 
 <img width="1854" height="775" alt="image" src="https://github.com/user-attachments/assets/ac88abfd-5265-42e1-bea7-44f47635a540" />
 
-![image](https://github.com/user-attachments/assets/8466cac3-b0d9-4c09-af4f-cbd36d5cf126)
 
